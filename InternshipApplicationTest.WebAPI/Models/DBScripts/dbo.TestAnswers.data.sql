@@ -1,0 +1,18 @@
+SET IDENTITY_INSERT [dbo].[TestAnswers] ON
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (1, N'Object Oriented Programming', 1)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (2, N'asrbn', 2)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (3, N'nsrtnsrtnstnsntsrnsrmjstrjsrtj', 3)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (4, N'stjsrtjsry45jrsj6sjr', 4)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (5, N'No Idea', 5)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (6, N'asrbnbraejej', 6)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (7, N'nsrtsrnsrmjstrjsrtj', 7)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (8, N'stjsrtjsry46sjr', 8)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (9, N'IDK', 9)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (10, N'asrbnllllljjj', 10)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (11, N'nsrtnsrtnstnsntsrnsrmjj', 1)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (12, N'stjsrtjsry4', 11)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (13, N'stjsraerntjsry4', 12)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (14, N'stjsnstrtjsry4', 13)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (15, N'stjsrtrstrtjsry4', 14)
+INSERT INTO [dbo].[TestAnswers] ([Id], [Content], [N_QuestionId]) VALUES (16, N'stjswertjsry4', 1)
+SET IDENTITY_INSERT [dbo].[TestAnswers] OFF

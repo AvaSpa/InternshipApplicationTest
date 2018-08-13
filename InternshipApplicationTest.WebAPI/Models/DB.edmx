@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DBStoreContainer">
+    <EntitySet Name="Applicants" EntityType="DB.Store.Applicants" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TestQuestions" EntityType="DB.Store.TestQuestions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TestAnswers" EntityType="DB.Store.TestAnswers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Internships" EntityType="DB.Store.Internships" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="C_ApplicantInternship" EntityType="DB.Store.C_ApplicantInternship" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TestConfigurations" EntityType="DB.Store.TestConfigurations" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="TestQuestionTestAnswer" Association="DB.Store.TestQuestionTestAnswer">
+      <End Role="TestQuestion" EntitySet="TestQuestions" />
+      <End Role="TestAnswer" EntitySet="TestAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicantC_ApplicantInternship" Association="DB.Store.ApplicantApplicantInternship">
+      <End Role="Applicant" EntitySet="Applicants" />
+      <End Role="ApplicantInternship" EntitySet="C_ApplicantInternship" />
+    </AssociationSet>
+    <AssociationSet Name="InternshipC_ApplicantInternship" Association="DB.Store.InternshipApplicantInternship">
+      <End Role="Internship" EntitySet="Internships" />
+      <End Role="ApplicantInternship" EntitySet="C_ApplicantInternship" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Applicants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TestQuestions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Statement" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CorrectAnswerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TestAnswers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="N_QuestionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Internships">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C_ApplicantInternship">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Score" Type="smallint" Nullable="true" />
+    <Property Name="ApplicantPassedTheTest" Type="bit" Nullable="true" />
+    <Property Name="DateTestTaken" Type="datetime" Nullable="true" />
+    <Property Name="N_ApplicantId" Type="int" Nullable="false" />
+    <Property Name="N_InternshipId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TestConfigurations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionNumber" Type="smallint" Nullable="false" />
+    <Property Name="TimeLimit" Type="time" Nullable="false" Precision="7" />
+    <Property Name="MinimumScore" Type="smallint" Nullable="false" />
+  </EntityType>
+  <Association Name="TestQuestionTestAnswer">
+    <End Role="TestQuestion" Type="DB.Store.TestQuestions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TestAnswer" Type="DB.Store.TestAnswers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestQuestion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TestAnswer">
+        <PropertyRef Name="N_QuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicantApplicantInternship">
+    <End Role="Applicant" Type="DB.Store.Applicants" Multiplicity="1" />
+    <End Role="ApplicantInternship" Type="DB.Store.C_ApplicantInternship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applicant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ApplicantInternship">
+        <PropertyRef Name="N_ApplicantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InternshipApplicantInternship">
+    <End Role="Internship" Type="DB.Store.Internships" Multiplicity="1" />
+    <End Role="ApplicantInternship" Type="DB.Store.C_ApplicantInternship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Internship">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ApplicantInternship">
+        <PropertyRef Name="N_InternshipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DBContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Applicants" EntityType="DB.Applicant" />
+          <EntitySet Name="TestQuestions" EntityType="DB.TestQuestion" />
+          <EntitySet Name="TestAnswers" EntityType="DB.TestAnswer" />
+          <AssociationSet Name="TestQuestionTestAnswer" Association="DB.TestQuestionTestAnswer">
+            <End Role="TestQuestion" EntitySet="TestQuestions" />
+            <End Role="TestAnswer" EntitySet="TestAnswers" />
+          </AssociationSet>
+          <EntitySet Name="Internships" EntityType="DB.Internship" />
+          <EntitySet Name="C_ApplicantInternship" EntityType="DB.C_ApplicantInternship" />
+          <AssociationSet Name="ApplicantC_ApplicantInternship" Association="DB.ApplicantApplicantInternship">
+            <End Role="Applicant" EntitySet="Applicants" />
+            <End Role="ApplicantInternship" EntitySet="C_ApplicantInternship" />
+          </AssociationSet>
+          <AssociationSet Name="InternshipC_ApplicantInternship" Association="DB.InternshipApplicantInternship">
+            <End Role="Internship" EntitySet="Internships" />
+            <End Role="ApplicantInternship" EntitySet="C_ApplicantInternship" />
+          </AssociationSet>
+          <EntitySet Name="TestConfigurations" EntityType="DB.TestConfiguration" />
+          </EntityContainer>
+        <EntityType Name="Applicant">
+          <Documentation>
+            <Summary>Person that applied for the internship</Summary>
+            <LongDescription>This is a person that applies for the internship. Instances of this entity can be created based on the personal info of the user.</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ApplicantInternships" Relationship="DB.ApplicantApplicantInternship" FromRole="Applicant" ToRole="ApplicantInternship" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TestQuestion">
+          <Documentation>
+            <Summary>Question in a test.</Summary>
+            <LongDescription>This is a question that can appear in a test.</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Statement" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="TestAnswers" Relationship="DB.TestQuestionTestAnswer" FromRole="TestQuestion" ToRole="TestAnswer" />
+          <Property Name="CorrectAnswerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestAnswer">
+          <Documentation>
+            <Summary>Answers for questions</Summary>
+            <LongDescription>This is the answer to a question.</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="TestQuestion" Relationship="DB.TestQuestionTestAnswer" FromRole="TestAnswer" ToRole="TestQuestion" />
+          <Property Name="N_QuestionId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="TestQuestionTestAnswer">
+          <End Type="DB.TestQuestion" Role="TestQuestion" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DB.TestAnswer" Role="TestAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestQuestion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestAnswer">
+              <PropertyRef Name="N_QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Internship">
+          <Documentation>
+            <Summary>The internship targeted for application</Summary>
+            <LongDescription>This is the internship for which the applicant applies.</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApplicantInternships" Relationship="DB.InternshipApplicantInternship" FromRole="Internship" ToRole="ApplicantInternship" />
+        </EntityType>
+        <EntityType Name="C_ApplicantInternship">
+          <Documentation>
+            <Summary>Many-to-many connection entity</Summary>
+            <LongDescription>This is a connection table to make a many-to many relation between Applicant and Internship.</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Score" Type="Int16" Nullable="true" />
+          <Property Name="ApplicantPassedTheTest" Type="Boolean" Nullable="true" />
+          <Property Name="DateTestTaken" Type="DateTime" Nullable="true" Precision="3" />
+          <Property Name="N_ApplicantId" Type="Int32" Nullable="false" />
+          <Property Name="N_InternshipId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Applicant" Relationship="DB.ApplicantApplicantInternship" FromRole="ApplicantInternship" ToRole="Applicant" />
+          <NavigationProperty Name="Internship" Relationship="DB.InternshipApplicantInternship" FromRole="ApplicantInternship" ToRole="Internship" />
+        </EntityType>
+        <Association Name="ApplicantApplicantInternship">
+          <End Type="DB.Applicant" Role="Applicant" Multiplicity="1" />
+          <End Type="DB.C_ApplicantInternship" Role="ApplicantInternship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applicant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicantInternship">
+              <PropertyRef Name="N_ApplicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="InternshipApplicantInternship">
+          <End Type="DB.Internship" Role="Internship" Multiplicity="1" />
+          <End Type="DB.C_ApplicantInternship" Role="ApplicantInternship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Internship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicantInternship">
+              <PropertyRef Name="N_InternshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TestConfiguration">
+          <Documentation>
+            <Summary>Test settings</Summary>
+            <LongDescription>This is the configuration for the test</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionNumber" Type="Int16" Nullable="false" />
+          <Property Name="TimeLimit" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="MinimumScore" Type="Int16" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBStoreContainer" CdmEntityContainer="DBContainer">
+    <EntitySetMapping Name="Applicants">
+      <EntityTypeMapping TypeName="IsTypeOf(DB.Applicant)">
+        <MappingFragment StoreEntitySet="Applicants">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestQuestions">
+      <EntityTypeMapping TypeName="IsTypeOf(DB.TestQuestion)">
+        <MappingFragment StoreEntitySet="TestQuestions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Statement" ColumnName="Statement" />
+          <ScalarProperty Name="CorrectAnswerId" ColumnName="CorrectAnswerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestAnswers">
+      <EntityTypeMapping TypeName="IsTypeOf(DB.TestAnswer)">
+        <MappingFragment StoreEntitySet="TestAnswers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="N_QuestionId" ColumnName="N_QuestionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Internships">
+      <EntityTypeMapping TypeName="IsTypeOf(DB.Internship)">
+        <MappingFragment StoreEntitySet="Internships">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_ApplicantInternship">
+      <EntityTypeMapping TypeName="IsTypeOf(DB.C_ApplicantInternship)">
+        <MappingFragment StoreEntitySet="C_ApplicantInternship">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="ApplicantPassedTheTest" ColumnName="ApplicantPassedTheTest" />
+          <ScalarProperty Name="DateTestTaken" ColumnName="DateTestTaken" />
+          <ScalarProperty Name="N_ApplicantId" ColumnName="N_ApplicantId" />
+          <ScalarProperty Name="N_InternshipId" ColumnName="N_InternshipId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestConfigurations">
+      <EntityTypeMapping TypeName="IsTypeOf(DB.TestConfiguration)">
+        <MappingFragment StoreEntitySet="TestConfigurations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="QuestionNumber" ColumnName="QuestionNumber" />
+          <ScalarProperty Name="TimeLimit" ColumnName="TimeLimit" />
+          <ScalarProperty Name="MinimumScore" ColumnName="MinimumScore" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

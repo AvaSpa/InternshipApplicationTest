@@ -1,0 +1,50 @@
+<div class="container">
+    <form #applicantForm="ngForm">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" required
+                   [(ngModel)]="applicant.firstName"
+                   name="firstName"
+                   #firstName="ngModel">
+            <div [hidden]="firstName.valid || firstName.pristine"
+                 class="alert alert-danger">
+                First Name is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" required
+                   [(ngModel)]="applicant.lastName"
+                   name="lastName"
+                   #lastName="ngModel">
+            <div [hidden]="lastName.valid || lastName.pristine"
+                 class="alert alert-danger">
+                Last Name is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" id="phoneNumber" required
+                   [(ngModel)]="applicant.phoneNumber"
+                   name="phoneNumber"
+                   #phoneNumber="ngModel">
+            <div [hidden]="phoneNumber.valid || phoneNumber.pristine"
+                 class="alert alert-danger">
+                Phone Number is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="internship">Internship</label>
+            <select class="form-control" id="internship" required [(ngModel)]="selectedInternshipId" name="internships">
+                <option *ngFor="let int of internships" [ngValue]="int.id">{{ int.name + ' ' + int.year}}</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success" (click)="apply()" [disabled]="!applicantForm.form.valid" name="apply">Take test</button>
+    </form>
+</div>
+
+{{diagnostic}}

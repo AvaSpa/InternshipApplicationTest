@@ -1,0 +1,7 @@
+.vs/
+Common/obj/
+InternshipApplicationTest.WebAPI/bin/
+InternshipApplicationTest.WebAPI/obj/
+InternshipApplicationTest.WinformsUI/bin/
+InternshipApplicationTest.WinformsUI/obj/
+packages/

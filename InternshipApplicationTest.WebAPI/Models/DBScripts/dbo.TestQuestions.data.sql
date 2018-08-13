@@ -1,0 +1,16 @@
+SET IDENTITY_INSERT [dbo].[TestQuestions] ON
+INSERT INTO [dbo].[TestQuestions] ([Id], [Statement], [CorrectAnswerId]) VALUES (1, N'What is OOP?', 1)
+INSERT INTO [dbo].[TestQuestions] ([Id], [Statement], [CorrectAnswerId]) VALUES (2, N'aevevaevbra?', 2)
+INSERT INTO [dbo].[TestQuestions] ([Id], [Statement], [CorrectAnswerId]) VALUES (3, N'abreerb?', 3)
+INSERT INTO [dbo].[TestQuestions] ([Id], [Statement], [CorrectAnswerId]) VALUES (4, N'abererbr?', 4)
+INSERT INTO [dbo].[TestQuestions] ([Id], [Statement], [CorrectAnswerId]) VALUES (5, N'ik,ier?', 5)
+INSERT INTO [dbo].[TestQuestions] ([Id], [Statement], [CorrectAnswerId]) VALUES (6, N',gst?', 6)
+INSERT INTO [dbo].[TestQuestions] ([Id], [Statement], [CorrectAnswerId]) VALUES (7, N'5shsh?', 7)
+INSERT INTO [dbo].[TestQuestions] ([Id], [Statement], [CorrectAnswerId]) VALUES (8, N'kdyty?', 8)
+INSERT INTO [dbo].[TestQuestions] ([Id], [Statement], [CorrectAnswerId]) VALUES (9, N'ludss?', 9)
+INSERT INTO [dbo].[TestQuestions] ([Id], [Statement], [CorrectAnswerId]) VALUES (10, N'ludsdddddddddds?', 10)
+INSERT INTO [dbo].[TestQuestions] ([Id], [Statement], [CorrectAnswerId]) VALUES (11, N'yjrtrss?', 11)
+INSERT INTO [dbo].[TestQuestions] ([Id], [Statement], [CorrectAnswerId]) VALUES (12, N'zrn?', 12)
+INSERT INTO [dbo].[TestQuestions] ([Id], [Statement], [CorrectAnswerId]) VALUES (13, N'weg?', 13)
+INSERT INTO [dbo].[TestQuestions] ([Id], [Statement], [CorrectAnswerId]) VALUES (14, N'ytr?', 14)
+SET IDENTITY_INSERT [dbo].[TestQuestions] OFF

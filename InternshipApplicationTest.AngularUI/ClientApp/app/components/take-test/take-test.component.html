@@ -1,0 +1,20 @@
+﻿<div class="container">
+    <div class="question">
+        {{currentTime}}
+    </div>
+
+    <form #questionForm="ngForm">
+        <label for="question" class="question">{{currentQuestion.statement}}</label>
+        <div class="answersContainer">
+            <div class="answers" id="question" *ngFor="let ans of currentQuestionAnswers" name="answers">
+                <label class="answerContainer">
+                    <input type="radio" (change)="onSelectionChange(ans)" name="answer" /> {{ans.content}}
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success" (click)="answerQuestion()" name="answer">Submit answer</button>
+        <button type="submit" class="btn btn-success" (click)="nextQuestion()" [disabled]="test.questions.length <= 1" name="next">Next question</button>
+    </form>
+</div>
