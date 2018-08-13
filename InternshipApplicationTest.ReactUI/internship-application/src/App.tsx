@@ -1,11 +1,11 @@
 import * as React from "react";
 import "./App.css";
 
-import TestComponent from "../src/TestComponent/TestComponent";
+import ApplyComponent from "../src/Components/ApplyComponent/ApplyComponent";
 
 class App extends React.Component {
   public render() {
-    return <TestComponent />;
+    return <ApplyComponent />;
   }
 }
 
