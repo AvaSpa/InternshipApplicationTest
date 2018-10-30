@@ -1,4 +1,4 @@
-﻿namespace InternshipApplicationTest.WinformsUI
+﻿namespace InternshipApplicationTest.Common.Util
 {
     public class ScoreCalculator
     {

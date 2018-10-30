@@ -5,3 +5,5 @@ InternshipApplicationTest.WebAPI/obj/
 InternshipApplicationTest.WinformsUI/bin/
 InternshipApplicationTest.WinformsUI/obj/
 packages/
+bin
+InternshipApplicationTest.WpfUI/obj/

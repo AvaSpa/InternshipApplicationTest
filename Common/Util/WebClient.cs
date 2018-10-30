@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace InternshipApplicationTest.WinformsUI
+namespace InternshipApplicationTest.Common.Util
 {
-    class WebClient<T> where T : class
+   public class WebClient<T> where T : class
     {
         private HttpClient client;
 
