@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="InternshipApplicationTest.WpfUI.Views.ApplicationFormView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:InternshipApplicationTest.WpfUI.Views"
+             mc:Ignorable="d" d:DesignWidth="260" Height="230">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+            <StackPanel Orientation="Vertical" Margin="0,0,0,20">
+                <TextBlock Margin="0,0,20,0" Text="First name"/>
+                <TextBox x:Name="FirstName" MinWidth="200" Margin="0,0,0,4"/>
+                <TextBlock Margin="0,0,20,0" Text="Last name"/>
+                <TextBox x:Name="LastName" MinWidth="200" Margin="0,0,0,4"/>
+                <TextBlock Margin="0,0,20,0" Text="Phone number"/>
+                <TextBox x:Name="PhoneNumber" MinWidth="200" Margin="0,0,0,4"/>
+                <TextBlock Margin="0,0,20,0" Text="Internship"/>
+                <ComboBox x:Name="Internships" SelectedItem="{Binding SelectedInternship}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text=" "/>
+                                <TextBlock Text="{Binding Year}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+            <Button x:Name="BeginTest" Content="Start test"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

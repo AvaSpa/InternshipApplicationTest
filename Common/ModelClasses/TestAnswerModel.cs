@@ -27,8 +27,15 @@
 
         public override bool Equals(object obj)
         {
-            var other = (TestAnswerModel)obj;
-            return this.Id.Equals(other.Id);
+            try
+            {
+                var other = (TestAnswerModel)obj;
+                return this.Id.Equals(other.Id);
+            }
+            catch (System.InvalidCastException)
+            {
+                return false;
+            }
         }
     }
 }

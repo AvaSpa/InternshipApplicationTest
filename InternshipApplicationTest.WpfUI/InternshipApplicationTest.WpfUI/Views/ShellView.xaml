@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InternshipApplicationTest.WpfUI.Views"
-        mc:Ignorable="d" FontSize="20"
-        Title="ShellView" Height="450" Width="400">
+        mc:Ignorable="d" SizeToContent="WidthAndHeight"
+        Title="" Height="320" Width="280" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
@@ -18,15 +18,6 @@
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <StackPanel HorizontalAlignment="Center" Orientation="Vertical"
-                        Margin="0,20,0,0">
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <TextBlock Margin="0,0,20,0">Text:</TextBlock>
-                    <TextBox x:Name="InputText" MinWidth="200"></TextBox>
-                </StackPanel>
-                <Button x:Name="BeginTest" Content="{Binding SubmitText}"/>
-            </StackPanel>
-        </StackPanel>
+        <ContentControl Grid.Row="1" Grid.Column="1" x:Name="ActiveItem"/>
     </Grid>
 </Window>

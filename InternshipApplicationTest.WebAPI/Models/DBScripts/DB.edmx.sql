@@ -5,6 +5,12 @@
 -- Generated from EDMX file: D:\C#\InternshipApplicationTest\InternshipApplicationTest.WebAPI\Models\DB.edmx
 -- --------------------------------------------------
 
+If(db_id(N'InternshipApplicationTest') IS NULL)
+BEGIN
+	CREATE DATABASE InternshipApplicationTest
+END
+GO
+
 SET QUOTED_IDENTIFIER OFF;
 GO
 USE [InternshipApplicationTest];

@@ -68,6 +68,8 @@
     <Compile Include="ModelClasses\TestModel.cs" />
     <Compile Include="ModelClasses\TestQuestionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Constants.cs" />
+    <Compile Include="Util\DataAccess.cs" />
     <Compile Include="Util\ScoreCalculator.cs" />
     <Compile Include="Util\WebClient.cs" />
   </ItemGroup>

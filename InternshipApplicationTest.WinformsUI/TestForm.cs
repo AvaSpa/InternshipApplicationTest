@@ -12,7 +12,6 @@ namespace InternshipApplicationTest.WinformsUI
 {
     public partial class TestForm : Form
     {
-        private string baseUrl;
         private TestModel test;
         private List<TestAnswerModel> answers;
         private TestQuestionModel currentQuestion;
@@ -22,9 +21,8 @@ namespace InternshipApplicationTest.WinformsUI
             InitializeComponent();
         }
 
-        public TestForm(string baseUrl, TestModel test) : this()
+        public TestForm(TestModel test) : this()
         {
-            this.baseUrl = baseUrl;
             this.test = test;
         }
 
@@ -112,9 +110,8 @@ namespace InternshipApplicationTest.WinformsUI
 
         private async Task LoadAnswers()
         {
-            var webclient = new WebClient<TestAnswerModel>(baseUrl);
-            var results = await webclient.GetAsync<List<TestAnswerModel>>("");
-            answers = results.Where(a => test.Questions.Select(q => q.Id).Contains(a.QuestionId)).ToList();
+            var answers = await DataAccess.GetAnswers();
+            answers = answers.Where(a => test.Questions.Select(q => q.Id).Contains(a.QuestionId)).ToList();
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
