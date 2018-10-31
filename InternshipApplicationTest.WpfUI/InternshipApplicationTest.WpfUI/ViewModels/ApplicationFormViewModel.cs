@@ -89,15 +89,8 @@ namespace InternshipApplicationTest.WpfUI.ViewModels
 
         public async void BeginTest()
         {
-            var selectedInternshipId = SelectedInternship.Id;
-#if DEBUG
-            FirstName = "io";
-            LastName = "eu";
-            PhoneNumber = new Random(DateTime.Now.Millisecond).Next().ToString();
-            selectedInternshipId = 1;
-#endif
             var applicantId = await DataAccess.RegisterApplicant(FirstName, LastName, PhoneNumber);
-            var test = await DataAccess.GetTest(applicantId, selectedInternshipId);
+            var test = await DataAccess.GetTest(applicantId, SelectedInternship.Id);
             if (test.ApplicantInternshipId > 0)
             {
                 var shell = (ShellViewModel)Parent;
