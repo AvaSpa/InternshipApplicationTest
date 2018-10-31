@@ -16,8 +16,14 @@ namespace InternshipApplicationTest.WebAPI.Controllers
     /// </summary>
     public class TestQuestionController : ApiController
     {
-        private static DBContainer db = new DBContainer();
-        private static DbSet<TestQuestion> testQuestions = db.TestQuestions;
+        private DBContainer db;
+        private DbSet<TestQuestion> testQuestions;
+
+        public TestQuestionController()
+        {
+            db = new DBContainer();
+            testQuestions = db.TestQuestions;
+        }
 
         /// <summary>
         /// Method used to get all the testQuestions

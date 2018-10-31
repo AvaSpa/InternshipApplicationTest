@@ -16,8 +16,14 @@ namespace InternshipApplicationTest.WebAPI.Controllers
     /// </summary>
     public class TestConfigurationController : ApiController
     {
-        private static DBContainer db = new DBContainer();
-        private static DbSet<TestConfiguration> testConfigurations = db.TestConfigurations;
+        private DBContainer db;
+        private DbSet<TestConfiguration> testConfigurations;
+
+        public TestConfigurationController()
+        {
+            db = new DBContainer();
+            testConfigurations = db.TestConfigurations;
+        }
 
         /// <summary>
         /// Method used to get all the testConfigurations

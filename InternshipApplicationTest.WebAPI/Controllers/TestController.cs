@@ -17,7 +17,12 @@ namespace InternshipApplicationTest.WebAPI.Controllers
     /// </summary>
     public class TestController : ApiController
     {
-        private static DBContainer db = new DBContainer();
+        private DBContainer db;
+
+        public TestController()
+        {
+            db = new DBContainer();
+        }
 
         /// <summary>
         /// Method used to generate a test for an applicant and an internship

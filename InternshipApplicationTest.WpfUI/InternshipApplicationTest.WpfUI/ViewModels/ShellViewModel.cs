@@ -32,7 +32,6 @@ namespace InternshipApplicationTest.WpfUI.ViewModels
         /// </summary>
         public async void EndTest(int applicantInternshipId, short obtainedScore)
         {
-            DeactivateItem(testControl, true);
 
             var response = await DataAccess.GetTestResult(applicantInternshipId, obtainedScore);
             var passed = response.StatusCode == HttpStatusCode.Accepted;
@@ -47,6 +46,8 @@ namespace InternshipApplicationTest.WpfUI.ViewModels
                 form = new ApplicationFormViewModel();
                 ActivateItem(form);
             }
+
+            DeactivateItem(testControl, true);
         }
 
         private static void ShowMessage(string message)

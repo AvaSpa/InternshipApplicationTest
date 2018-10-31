@@ -124,7 +124,7 @@ namespace InternshipApplicationTest.WpfUI.ViewModels
             }
         }
 
-        public void PostponeQuestion(TestQuestionModel currentQuestion)
+        public void PostponeQuestion()
         {
             if (questions.Count > 0)
             {

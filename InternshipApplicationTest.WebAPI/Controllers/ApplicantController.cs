@@ -16,8 +16,14 @@ namespace InternshipApplicationTest.WebAPI.Controllers
     /// </summary>
     public class ApplicantController : ApiController
     {
-        private static DBContainer db = new DBContainer();
-        private static DbSet<Applicant> applicants = db.Applicants;
+        private DBContainer db;
+        private DbSet<Applicant> applicants;
+
+        public ApplicantController()
+        {
+            db = new DBContainer();
+            applicants = db.Applicants;
+        }
 
         /// <summary>
         /// Method used to get all the applicants

@@ -13,8 +13,14 @@ namespace InternshipApplicationTest.WebAPI.Controllers
     /// </summary>
     public class InternshipController : ApiController
     {
-        private static DBContainer db = new DBContainer();
-        private static DbSet<Internship> internships = db.Internships;
+        private DBContainer db;
+        private DbSet<Internship> internships;
+
+        public InternshipController()
+        {
+            db = new DBContainer();
+            internships = db.Internships;
+        }
 
         /// <summary>
         /// Method used to get all the internships
